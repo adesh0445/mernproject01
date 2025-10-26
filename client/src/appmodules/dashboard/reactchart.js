@@ -16,11 +16,13 @@ export function Reactchart() {
 
   const [allEmployees, setAllEmployees] = useState([]);
   const [chartData, setChartData] = useState([]);
+     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
+
 
   // ✅ API से डेटा लाना
   const myapi = async () => {
     try {
-      const { data } = await axios.get("http://localhost:9800/Employees");
+      const { data } = await axios.get(`${API_URL}/Employees`);
 
       console.log("API Response:", data);
 

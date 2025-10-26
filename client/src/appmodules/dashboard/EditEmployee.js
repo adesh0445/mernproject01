@@ -10,9 +10,11 @@ export default function EditEmployee() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
+     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
+
 
   useEffect(() => {
-    axios.get(`https://mernproject01-yrxf.onrender.com/Employees/${id}`)
+    axios.get(`${API_URL}/Employees/${id}`)
       .then(res => {
         setFullName(res.data.fullName);
         setPhone(res.data.phone);
@@ -24,7 +26,7 @@ export default function EditEmployee() {
 
   const handleUpdate = () => {
     const employee = { fullName, phone, email, gender };
-    axios.put(`http://localhost:9800/updateworker/${id}`, employee).then(() => {
+    axios.put(`${API_URL}/updateworker/${id}`, employee).then(() => {
         alert("Employee updated successfully ✅");
         navigate("/dashboard/Employeelist");
       }).catch(err => {

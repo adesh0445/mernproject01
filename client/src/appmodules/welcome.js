@@ -6,9 +6,11 @@ import { FaUser } from 'react-icons/fa';
 
 export function Welcome() {
   const [appmenu, setappmenu] = useState([]);
+     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
+
 
   useEffect(() => {
-    axios.get("https://mernproject01-yrxf.onrender.com/applist")
+    axios.get(`${API_URL}/applist`)
       .then((d) => setappmenu(d.data.applist));
   }, []);
 

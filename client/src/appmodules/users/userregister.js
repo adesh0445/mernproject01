@@ -12,11 +12,13 @@ export function Registerpage() {
   const [gender,setGender]=useState("")
    const [message, setMessage] = useState("");       // Message state 
   const [msgType, setMsgType] = useState("");       // 'error' or 'success'
+     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
+
   const navigate = useNavigate();
 
   const handleRegister = () => {
     const userdata = { username, password, email, phone, gender };
-    axios.post("https://mernproject01-yrxf.onrender.com/createUser", userdata).then((res) => {
+    axios.post(`${API_URL}/createUser`, userdata).then((res) => {
       if(res.data.status===450){
       toast.error(res.data.message,{position:"top-right",autoclose:3000})
       }

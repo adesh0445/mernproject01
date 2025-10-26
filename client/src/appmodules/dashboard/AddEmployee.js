@@ -9,10 +9,11 @@ export function AddEmployee() {
   const [email, setEmail] = useState("");
   const [gender,setGender]=useState("")
   const navigate = useNavigate();
+   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
 
   const handleAdd = () => {
     const userdata = { fullName,email, phone, gender };
-    axios.post("https://mernproject01-yrxf.onrender.com/AddEmployee", userdata).then((res) => {
+    axios.post(`${API_URL}/AddEmployee`, userdata).then((res) => {
       if(res.data.status===450){
         alert(res.data.message)
       }

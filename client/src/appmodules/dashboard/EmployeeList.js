@@ -8,13 +8,19 @@ export function Employeelist() {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
+  // Backend URL from environment variable
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
   // API se employee data laana
   const WorkersApi = async () => {
-    await axios.get("http://localhost:9800/Employees").then((res)=>{
-        if (res.data.status === 251) {
+    try {
+      const res = await axios.get(`${API_URL}/Employees`);
+      if (res.data.status === 251) {
         setEmployees(res.data.AllEmployees);
       }
-    });
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+    }
   };
 
   useEffect(() => {
@@ -28,25 +34,25 @@ export function Employeelist() {
 
   // Filter lagana (case-insensitive search)
   const filteredEmployees = Employees.filter((emp) => {
-    if (searchInput.trim() === "") {
-      return true; // agar input blank ho to sab dikhao
-    } 
-    else {
-      return emp.fullName.toLowerCase().includes(searchInput.toLowerCase());
-    }
-    
+    if (searchInput.trim() === "") return true;
+    return emp.fullName.toLowerCase().includes(searchInput.toLowerCase());
   });
 
   const handleEdit = (id) => navigate(`/dashboard/edit/${id}`);
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete this employee?")) {
-      const res = await axios.delete(`https://mernproject01-yrxf.onrender.com/Employees/${id}`);
-      if (res.data.status === 250) {
-        alert(res.data.message);
-        WorkersApi();
-      } else {
-        alert("Failed to delete employee");
+      try {
+        const res = await axios.delete(`${API_URL}/Employees/${id}`);
+        if (res.data.status === 250) {
+          alert(res.data.message);
+          WorkersApi();
+        } else {
+          alert("Failed to delete employee");
+        }
+      } catch (error) {
+        console.error("Delete error:", error);
+        alert("Error deleting employee");
       }
     }
   };
@@ -67,7 +73,6 @@ export function Employeelist() {
               value={searchInput}
               className="m-1"
             />
-            {/* agar chahe to button bhi rakh sakte ho */}
             <button className="btn btn-success m-1">Search</button>
           </div>
         </div>

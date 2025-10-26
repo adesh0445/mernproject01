@@ -4,9 +4,11 @@ import { Reactchart } from "./reactchart";
 export function Landingpage() {
   let [mydata, setMydata] = useState([]);
   let [empC, setEmpC] = useState([]);
+     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
+
 
   let myapi = () => {
-    axios.get("https://mernproject01-yrxf.onrender.com/Employees", {
+    axios.get(`${API_URL}/Employees`, {
       }).then((d) => {
         setMydata(d.data.AllEmployees);
         setEmpC(d.data.AllEmployees);

@@ -6,12 +6,14 @@ import { toast, ToastContainer } from "react-toastify";
 export function Loginpage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:9800";
+
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     const userdata = { username, password };
 
-    await axios.post("https://mernproject01-yrxf.onrender.com/Login", userdata).then((res) => {
+    await axios.post(`${API_URL}/Login`, userdata).then((res) => {
       if (res.data.status === 450) {
         toast.error(res.data.message);
       } else if (res.data.status === 451) {
