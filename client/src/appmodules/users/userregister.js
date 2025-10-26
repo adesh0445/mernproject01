@@ -16,7 +16,7 @@ export function Registerpage() {
 
   const handleRegister = () => {
     const userdata = { username, password, email, phone, gender };
-    axios.post("http://localhost:9800/createUser", userdata).then((res) => {
+    axios.post("https://mernproject01-yrxf.onrender.com/createUser", userdata).then((res) => {
       if(res.data.status===450){
       toast.error(res.data.message,{position:"top-right",autoclose:3000})
       }

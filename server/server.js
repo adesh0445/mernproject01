@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 myapp.use(cors({
-    origin: "http://localhost:3000" // frontend ko backend se jodne ke liye
+    origin: "https://mernproject01-yrxf.onrender.com" // frontend ko backend se jodne ke liye
 }));
 
 // ✅ Body parser pehle aayega

@@ -12,7 +12,7 @@ export function AddEmployee() {
 
   const handleAdd = () => {
     const userdata = { fullName,email, phone, gender };
-    axios.post("http://localhost:9800/AddEmployee", userdata).then((res) => {
+    axios.post("https://mernproject01-yrxf.onrender.com/AddEmployee", userdata).then((res) => {
       if(res.data.status===450){
         alert(res.data.message)
       }

@@ -51,7 +51,7 @@ button:hover {
   width: 70%;
 }
  .welcome::before{
-  content:"Welcome To My Application";
+  content:"Welcome To Adesh Application";
  }
  .sideli li{
     color: black;

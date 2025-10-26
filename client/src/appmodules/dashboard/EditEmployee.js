@@ -12,7 +12,7 @@ export default function EditEmployee() {
   const [gender, setGender] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:9800/Employees/${id}`)
+    axios.get(`https://mernproject01-yrxf.onrender.com/Employees/${id}`)
       .then(res => {
         setFullName(res.data.fullName);
         setPhone(res.data.phone);

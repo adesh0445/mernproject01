@@ -41,7 +41,7 @@ export function Employeelist() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete this employee?")) {
-      const res = await axios.delete(`http://localhost:9800/Employees/${id}`);
+      const res = await axios.delete(`https://mernproject01-yrxf.onrender.com/Employees/${id}`);
       if (res.data.status === 250) {
         alert(res.data.message);
         WorkersApi();

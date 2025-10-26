@@ -2,12 +2,13 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'react-icons/fa';
 import axios from 'axios';
+import { FaUser } from 'react-icons/fa';
 
 export function Welcome() {
   const [appmenu, setappmenu] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:9800/applist')
+    axios.get("https://mernproject01-yrxf.onrender.com/applist")
       .then((d) => setappmenu(d.data.applist));
   }, []);
 
@@ -16,8 +17,8 @@ export function Welcome() {
       <div className='container myapp mt-3'>
         <div className='row text-center'>
           <div className='col-12'>
-            <h3 className='text-primary welcome'></h3>
-            <p className='text-secondary'>You Can Explore My Application Using Below Menu</p>
+            <h3 className='text-primary welcome'><FaUser></FaUser></h3>
+            <p className='text-secondary'>This Project Develop By Adesh Use Backend & Fronted Code</p>
             <hr />
           </div>
           {appmenu.map((m, index) => {

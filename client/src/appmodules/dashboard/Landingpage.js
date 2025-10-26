@@ -6,7 +6,7 @@ export function Landingpage() {
   let [empC, setEmpC] = useState([]);
 
   let myapi = () => {
-    axios.get("http://localhost:9800/Employees", {
+    axios.get("https://mernproject01-yrxf.onrender.com/Employees", {
       }).then((d) => {
         setMydata(d.data.AllEmployees);
         setEmpC(d.data.AllEmployees);
