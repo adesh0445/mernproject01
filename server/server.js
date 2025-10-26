@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 myapp.use(cors({
-    origin: "https://mernproject01-yrxf.onrender.com" // frontend ko backend se jodne ke liye
+    origin: "https://adeshmernproject01.onrender.com" // frontend ko backend se jodne ke liye
 }));
 
 // ✅ Body parser pehle aayega
