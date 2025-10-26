@@ -1,24 +1,26 @@
 const express = require('express');
 const myapp = express();
 require('dotenv').config();
-
 const cors = require('cors');
+
+// ✅ Production mein dynamic CORS
 myapp.use(cors({
-    origin: "https://adeshmernproject01.onrender.com" // frontend ko backend se jodne ke liye
+    origin: process.env.FRONTEND_URL || "http://localhost:3000"
 }));
 
-// ✅ Body parser pehle aayega
+// ✅ Body parsers
 myapp.use(express.json());
 myapp.use(express.urlencoded({ extended: true }));
 
-// ✅ Routing baad me
+// ✅ Routes
 const myrouting = require("./approuting/approute");
 myapp.use(myrouting);
 
 // ✅ Database connection
 require("./database/mydb");
 
-const myport = process.env.PORT || 9900;
+// ✅ Port from environment (Render inject karega)
+const myport = process.env.PORT || 5000;
 myapp.listen(myport, () => {
-    console.log(`Server Running At http://localhost:${myport}`);
+    console.log(`✅ Server Running On Port: ${myport}`);
 });
