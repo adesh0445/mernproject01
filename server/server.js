@@ -5,8 +5,9 @@ const cors = require('cors');
 
 // ✅ Production mein dynamic CORS
 myapp.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000"
+    origin: "https://adeshmernproject01.onrender.com"
 }));
+
 
 // ✅ Body parsers
 myapp.use(express.json());
