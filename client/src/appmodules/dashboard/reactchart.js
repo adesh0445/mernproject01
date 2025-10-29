@@ -81,13 +81,13 @@ export function Reactchart() {
   return (
     <Fragment>
       <div className="container mt-4">
-        <h3 className="text-center mb-4">कर्मचारियों का Gender Distribution</h3>
+        <h3 className="text-center mb-4">Gender Distribution Of Emoloyees</h3>
 
         {/* 👉 Filter Dropdown */}
         <div className="row mb-3">
           <div className="col-md-4">
             <select className="form-select" onChange={handleFilter}>
-              <option value="all">सभी</option>
+              <option value="all">All</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
